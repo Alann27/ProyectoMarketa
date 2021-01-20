@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DA4735C2-5459-4D09-A4D6-2105E40D68D3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ProyectoMarketa</RootNamespace>
+    <AssemblyName>ProyectoMarketa_1.0</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Alan\Desktop\Programa\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>ProyectoMarketa</ProductName>
+    <PublisherName>AlanR</PublisherName>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ProyectoMarketa.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms">
+      <HintPath>..\..\Teoria18-09\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1358.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.NonGeneric, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.NonGeneric.4.3.0\lib\net46\System.Collections.NonGeneric.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AgregarCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarCategoria.Designer.cs">
+      <DependentUpon>AgregarCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarCliente.Designer.cs">
+      <DependentUpon>AgregarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarProducto.Designer.cs">
+      <DependentUpon>AgregarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarUser.Designer.cs">
+      <DependentUpon>AgregarUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BorrarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BorrarUsuario.Designer.cs">
+      <DependentUpon>BorrarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarCliente.Designer.cs">
+      <DependentUpon>BuscarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarFactura.Designer.cs">
+      <DependentUpon>BuscarFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarProducto.Designer.cs">
+      <DependentUpon>BuscarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetallarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetallarFactura.Designer.cs">
+      <DependentUpon>DetallarFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturacion.Designer.cs">
+      <DependentUpon>Facturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageBoxManager.cs" />
+    <Compile Include="Metodos.cs" />
+    <Compile Include="ModificarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarCliente.Designer.cs">
+      <DependentUpon>ModificarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarProducto.Designer.cs">
+      <DependentUpon>ModificarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PagarDeudas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PagarDeudas.Designer.cs">
+      <DependentUpon>PagarDeudas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteDelDia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteDelDia.Designer.cs">
+      <DependentUpon>ReporteDelDia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteEntreFechas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteEntreFechas.Designer.cs">
+      <DependentUpon>ReporteEntreFechas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteFecha.Designer.cs">
+      <DependentUpon>ReporteFecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tablas.cs">
+      <DependentUpon>Tablas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Tablas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tablas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs" />
+    <EmbeddedResource Include="AgregarCategoria.resx">
+      <DependentUpon>AgregarCategoria.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarCliente.resx">
+      <DependentUpon>AgregarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarProducto.resx">
+      <DependentUpon>AgregarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarUser.resx">
+      <DependentUpon>AgregarUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BorrarUsuario.resx">
+      <DependentUpon>BorrarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarCliente.resx">
+      <DependentUpon>BuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarFactura.es-DO.resx">
+      <DependentUpon>BuscarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarFactura.resx">
+      <DependentUpon>BuscarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarProducto.resx">
+      <DependentUpon>BuscarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetallarFactura.resx">
+      <DependentUpon>DetallarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturacion.resx">
+      <DependentUpon>Facturacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarCliente.resx">
+      <DependentUpon>ModificarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarProducto.resx">
+      <DependentUpon>ModificarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PagarDeudas.resx">
+      <DependentUpon>PagarDeudas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ReporteDelDia.resx">
+      <DependentUpon>ReporteDelDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteEntreFechas.resx">
+      <DependentUpon>ReporteEntreFechas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteFecha.resx">
+      <DependentUpon>ReporteFecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Resource Include="ReportesTemplate.docx" />
+    <None Include="Tablas.xsc">
+      <DependentUpon>Tablas.xsd</DependentUpon>
+    </None>
+    <None Include="Tablas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Tablas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tablas.xss">
+      <DependentUpon>Tablas.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\salir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hoy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\entre fechas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\regresar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\regresar peque.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LaMarketa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\216436-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1315083-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1315087-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar pequeno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\limpiar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lapiz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\salir color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\regresar color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\limpiar color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lapiz1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carrito.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
