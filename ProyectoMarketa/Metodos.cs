@@ -55,27 +55,6 @@ namespace ProyectoMarketa
             return textBox.Text;
         }
 
-        public void SoloLetras(object sender, KeyPressEventArgs e, Label lblError)
-        {
-            try
-            {
-                if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
-                {
-                    lblError.Text = "Solo se permiten letras";
-                    lblError.Visible = true;
-                    e.Handled = true;
-                    return;
-                }
-                else
-                    lblError.Visible = false;
-            }
-            catch (Exception error)
-            {
-                log.Error($"Error: {error.Message}", error);
-                MessageBox.Show($"Error: {error.Message}");
-            }
-        }
-
         public void SoloLetrasSinLbl(object sender, KeyPressEventArgs e)
         {
             try
@@ -93,26 +72,6 @@ namespace ProyectoMarketa
             }
         }
 
-        public void SoloLetrasyNum(object sender, KeyPressEventArgs e, Label lblError)
-        {
-            try
-            {
-                if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space) && !(char.IsDigit(e.KeyChar)))
-                {
-                    lblError.Text = "Solo se permiten letras y números";
-                    lblError.Visible = true;
-                    e.Handled = true;
-                    return;
-                }
-                else
-                    lblError.Visible = false;
-            }
-            catch (Exception error)
-            {
-                log.Error($"Error: {error.Message}", error);
-                MessageBox.Show($"Error: {error.Message}");
-            }
-        }
 
         public void SoloLetrasyNumSinLbl(object sender, KeyPressEventArgs e)
         {
@@ -123,27 +82,6 @@ namespace ProyectoMarketa
                     e.Handled = true;
                     return;
                 }
-            }
-            catch (Exception error)
-            {
-                log.Error($"Error: {error.Message}", error);
-                MessageBox.Show($"Error: {error.Message}");
-            }
-        }
-
-        public void SoloNumeros(object sender, KeyPressEventArgs e, Label lblError)
-        {
-            try
-            {
-                if (!(char.IsDigit(e.KeyChar)) && (e.KeyChar != '.') && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Enter))
-                {
-                    lblError.Text = "Solo se permiten números";
-                    lblError.Visible = true;
-                    e.Handled = true;
-                    return;
-                }
-                else
-                    lblError.Visible = false;
             }
             catch (Exception error)
             {
@@ -224,43 +162,6 @@ namespace ProyectoMarketa
             }
             return dato;
         }
-
-        public void RejectMask(Label lblError, MaskedTextBox textBox)
-        {
-            try
-            {
-                lblError.Text = "Solo se permiten números";
-                lblError.Visible = true;
-
-                if (textBox.MaskFull)
-                {
-                    lblError.Visible = false;
-                }
-
-            }
-            catch (Exception error)
-            {
-                log.Error($"Error: {error.Message}", error);
-                MessageBox.Show($"Error: {error.Message}");
-            }
-        }
-
-        public void QuitarVisibilidad(Label lblError, MaskedTextBox textBox)
-        {
-            try
-            {
-                if (textBox.MaskFull)
-                {
-                    lblError.Visible = false;
-                }
-            }
-            catch (Exception error)
-            {
-                log.Error($"Error: {error.Message}", error);
-                MessageBox.Show($"Error: {error.Message}");
-            }
-        }
-
 
     }
 }

@@ -27,9 +27,6 @@ namespace ProyectoMarketa
             try
             {
                 InitializeComponent();
-                pctFondo.Controls.Add(pctSombra); //se le anade la sombra a la foto de fondo
-                pctSombra.Location = new Point(-2100, -1000);//se le coloca la localizacion exacta donde debe ir la sombra para que de sombra
-                pctSombra.BackColor = Color.Transparent;//se coloca el fondo transparente para que el fondo sea la foto de fondo
 
                 pctFondo.Controls.Add(pctAlerta);// se agrega la foto que da sombra al panel de Alertas a la foto de fondo
                 pctAlerta.Location = new Point(508, 174);//se le coloca la localizacion exacta donde debe ir la sombra para que de sombra a lo que queremos (alertas)
@@ -94,6 +91,9 @@ namespace ProyectoMarketa
 
                 GenerarAlertas();//genera las alertas
                 GenerarMasVendidos();//genera los productos mas vendidos
+
+                pictVentasAcumuladas.Controls.Add(lblVentasAcumuladas);
+                lblVentasAcumuladas.Dock = DockStyle.Fill;
             }
             catch (Exception error)
             {

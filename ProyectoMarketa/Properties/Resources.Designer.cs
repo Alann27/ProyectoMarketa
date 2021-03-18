@@ -133,6 +133,26 @@ namespace ProyectoMarketa.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cant_de_ventas {
+            get {
+                object obj = ResourceManager.GetObject("Cant de ventas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cant_productos_acabandose {
+            get {
+                object obj = ResourceManager.GetObject("Cant productos acabandose", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap carrito {
             get {
                 object obj = ResourceManager.GetObject("carrito", resourceCulture);
@@ -146,6 +166,16 @@ namespace ProyectoMarketa.Properties {
         internal static System.Drawing.Bitmap delete {
             get {
                 object obj = ResourceManager.GetObject("delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Deuda_total_de_clientes {
+            get {
+                object obj = ResourceManager.GetObject("Deuda total de clientes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -296,6 +326,26 @@ namespace ProyectoMarketa.Properties {
         internal static System.Drawing.Bitmap salir_color {
             get {
                 object obj = ResourceManager.GetObject("salir color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Total_de_abonos_últimos_30_dias {
+            get {
+                object obj = ResourceManager.GetObject("Total de abonos últimos 30 dias", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Total_de_ventas_últimos_30_dias {
+            get {
+                object obj = ResourceManager.GetObject("Total de ventas últimos 30 dias", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
