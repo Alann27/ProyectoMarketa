@@ -176,6 +176,7 @@ namespace ProyectoMarketa
             this.Name = "ReporteVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporte de ventas";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ReporteVentas_FormClosed);
             this.Load += new System.EventHandler(this.ReporteVentas_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

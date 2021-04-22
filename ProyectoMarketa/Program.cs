@@ -18,11 +18,6 @@ namespace ProyectoMarketa
             Usuario usuario = new Usuario();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            MessageBoxManager.Yes = "Sí";
-            MessageBoxManager.Cancel = "Cancelar";
-            MessageBoxManager.OK = "Okay";
-            MessageBoxManager.Register();
             
 
             Application.Run(new Login(usuario));            

@@ -15,19 +15,41 @@ namespace ProyectoMarketa
 {
     public partial class ReporteVentas : Form
     {
+        private Usuario _usuario = new Usuario();
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);//objeto para registrar lo que se hace en esta ventana
-        public ReporteVentas()
+        public ReporteVentas(Usuario usuario)
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+                _usuario = usuario;
+                log.Debug($"El usuario {usuario.Nombre} {usuario.Apellidos} abrió la ventana ReporteVentas");
+
+            }
+            catch (Exception error)
+            {
+                log.Error($"Error: {error.Message}", error);
+                MessageBox.Show($"Error: {error.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ReporteVentas_Load(object sender, EventArgs e)
         {
+            try
+            {
+                GenerarVentasPorDia(DateTime.Today);
+                this.rpvVentas.RefreshReport();
 
-            this.rpvVentas.RefreshReport();
+                //GenerarVentasEntreFechas(Convert.ToDateTime("2020-01-01"), Convert.ToDateTime("2021-12-31"));
+                //GenerarVentasPorDia(Convert.ToDateTime("2020-09-16"));
 
-            GenerarVentasEntreFechas(Convert.ToDateTime("2020-01-01"), Convert.ToDateTime("2021-12-31"));
-            //GenerarVentasPorDia(Convert.ToDateTime("2020-09-16"));
+            }
+            catch (Exception error)
+            {
+                log.Error($"Error: {error.Message}", error);
+                MessageBox.Show($"Error: {error.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void GenerarVentasPorDia(DateTime fecha)
@@ -239,10 +261,14 @@ namespace ProyectoMarketa
 
         private void btnAno_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void ReporteVentas_FormClosed(object sender, FormClosedEventArgs e)
+        {
             try
             {
-                DateTime fechaInicio = new DateTime(DateTime.Today.Year, 1, 1);
-                GenerarVentasEntreFechas(fechaInicio, DateTime.Now);
+                log.Debug($"El usuario {_usuario.Nombre} {_usuario.Apellidos} cerró la ventana ReporteVentas");
 
             }
             catch (Exception error)
@@ -250,6 +276,7 @@ namespace ProyectoMarketa
                 log.Error($"Error: {error.Message}", error);
                 MessageBox.Show($"Error: {error.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
     }
 }

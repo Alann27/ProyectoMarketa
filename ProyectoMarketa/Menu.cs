@@ -9,7 +9,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
+using ProyectoMarketa.ReportesTableAdapters;
 using ProyectoMarketa.TablasTableAdapters;
+using static ProyectoMarketa.Reportes;
 using static ProyectoMarketa.Tablas;
 
 namespace ProyectoMarketa
@@ -18,6 +20,10 @@ namespace ProyectoMarketa
     {
 
         Usuario usuario = new Usuario();
+
+        public bool facturacionAbierto = false;
+        public bool pagarDeudasAbierto = false;
+
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 
@@ -89,11 +95,27 @@ namespace ProyectoMarketa
                 //cbxMasDinero.Checked = false;
                 //cbxMasVendidos.Checked = false;
 
-                GenerarAlertas();//genera las alertas
-                GenerarMasVendidos();//genera los productos mas vendidos
+                
+
+                //GenerarAlertas();//genera las alertas
+                //GenerarMasVendidos();//genera los productos mas vendidos
 
                 pictVentasAcumuladas.Controls.Add(lblVentasAcumuladas);
                 lblVentasAcumuladas.Dock = DockStyle.Fill;
+
+                pictCantidadProductos.Controls.Add(lblCantidadProductos);
+                lblCantidadProductos.Dock = DockStyle.Fill;
+
+                pictCantidadVentas.Controls.Add(lblCantVentas);
+                lblCantVentas.Dock = DockStyle.Fill;
+
+                pictDeudaTotal.Controls.Add(lblDeudaTotal);
+                lblDeudaTotal.Dock = DockStyle.Fill;
+
+                pictTotalAbonos.Controls.Add(lblTotalAbonos);
+                lblTotalAbonos.Dock = DockStyle.Fill;
+
+                CargarDashboard();
             }
             catch (Exception error)
             {
@@ -368,10 +390,10 @@ namespace ProyectoMarketa
         {
             try
             {
-                if (usuario.EstadoFac == false)//comprueba que ya no este abierta una ventana facturacion con anterioriedad
+                if (!facturacionAbierto)//comprueba que ya no este abierta una ventana facturacion con anterioriedad
                 {
-                    usuario.EstadoFac = true;//activa que ya va a haber una ventana facturacion para asi no abrir otra
-                    Facturacion facturacion = new Facturacion(usuario);//objeto de la ventana facturacion
+                    facturacionAbierto= true;//usuario.EstadoFac = true;//activa que ya va a haber una ventana facturacion para asi no abrir otra
+                    Facturacion facturacion = new Facturacion(usuario, this);//objeto de la ventana facturacion
                     facturacion.Show();//se muestra la ventana facturacion
                     facturacion.txtIdProducto.Focus();//hace focus en el textbox para introducir el codigo de barras de un producto
                 }
@@ -421,10 +443,10 @@ namespace ProyectoMarketa
         {
             try
             {
-                if (usuario.EstadoPag == false)//comprueba que ya no haya una ventana pagar deuda abierta
+                if (!pagarDeudasAbierto)//comprueba que ya no haya una ventana pagar deuda abierta
                 {
-                    usuario.EstadoPag = true;//se activa que ya va a haber una ventana pagar deudas abierta
-                    PagarDeudas pagarDeudas = new PagarDeudas(usuario);//objeto de la ventana pagar deudas
+                    pagarDeudasAbierto = true;//se activa que ya va a haber una ventana pagar deudas abierta
+                    PagarDeudas pagarDeudas = new PagarDeudas(usuario, this);//objeto de la ventana pagar deudas
                     pagarDeudas.Show();//se muestra la ventana pagar deudas
                 }
                 else//si ya hay una ventana pagar deudas abierta
@@ -551,7 +573,89 @@ namespace ProyectoMarketa
 
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(System.AppDomain.CurrentDomain.BaseDirectory + @"\Manual.pdf");//abre el manual para ayudar
+            try
+            {
+                System.Diagnostics.Process.Start(System.AppDomain.CurrentDomain.BaseDirectory + @"\Manual.pdf");//abre el manual para ayudar
+            }
+            catch (Exception error)
+            {
+                log.Error($"Error: {error.Message}", error);
+                MessageBox.Show($"Error: {error.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void CargarDashboard()
+        {
+            try
+            {
+                CantidadFacturasConySinDeudasTableAdapter facturasConySinDeudasAdapter = new CantidadFacturasConySinDeudasTableAdapter();
+                CantidadFacturasConySinDeudasDataTable FacturasConySinDeudasData = facturasConySinDeudasAdapter.CantidadFacturasConySinDeudas();
+
+                chartFacturasConySinDeudas.Series[0].Points.DataBindXY(FacturasConySinDeudasData.Rows, "TipoFactura", FacturasConySinDeudasData.Rows, "Cantidad");
+
+                VentasPorDiaUltimos30TableAdapter ventasPorDiaAdapter = new VentasPorDiaUltimos30TableAdapter();
+                VentasPorDiaUltimos30DataTable ventasPorDiaData = ventasPorDiaAdapter.VentasPorDiaUltimos30();
+
+                chartVentasPorDia.Series[0].Points.DataBindXY(ventasPorDiaData.Rows, "FechaAbreviada", ventasPorDiaData.Rows, "TotalVentas");
+
+                VentasProductosPorCategoriaTableAdapter productosVendidodPorCatAdapter = new VentasProductosPorCategoriaTableAdapter();
+                VentasProductosPorCategoriaDataTable productosVendidosPorCatData = productosVendidodPorCatAdapter.VentasProductosPorCategoria();
+
+                chartCategoriasMasVendidas.Series[0].Points.DataBindXY(productosVendidosPorCatData.Rows, "Nombre", productosVendidosPorCatData.Rows, "Cantidad");
+
+                Top5ProductosMasVendidosTableAdapter top5ProductosAdapter = new Top5ProductosMasVendidosTableAdapter();
+                Top5ProductosMasVendidosDataTable top5ProductosData = top5ProductosAdapter.Top5ProductosMasVendidos();
+
+                chartProductosMasVendidos.Series[0].Points.DataBindXY(top5ProductosData.Rows, "NombreProducto", top5ProductosData.Rows, "Vendido");
+
+                FuncionesTableAdapter funcionesAdapter = new FuncionesTableAdapter();
+                decimal totalVentas = funcionesAdapter.VentasEnUltimos30Dias()[0].Valor,
+                        totalAbono = funcionesAdapter.AbonosEnUltimos30Dias()[0].Valor,
+                        deudaTotal = funcionesAdapter.DeudaTotal()[0].Valor;
+
+                int cantidadVentas = Convert.ToInt32(funcionesAdapter.FacturasEnUltimos30Dias()[0].Valor),
+                    cantidadProductosAcabandose = Convert.ToInt32(funcionesAdapter.CantidadProductosAcabandose()[0].Valor);
+
+                lblVentasAcumuladas.Text = "RD$" + string.Format("{0:0,0.00}", totalVentas);
+                lblTotalAbonos.Text = "RD$" + string.Format("{0:0,0.00}", totalAbono);
+                lblDeudaTotal.Text = "RD$" + string.Format("{0:0,0.00}", deudaTotal);
+
+                lblCantVentas.Text = cantidadVentas.ToString();
+                lblCantidadProductos.Text = cantidadProductosAcabandose.ToString();
+            }
+            catch (Exception error)
+            {
+                log.Error($"Error: {error.Message}", error);
+                MessageBox.Show($"Error: {error.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ventasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ReporteVentas reporteVentas = new ReporteVentas(usuario);//objeto de la ventana reporte del dia
+                reporteVentas.ShowDialog();//se muestra la ventana reporte del dia
+            }
+            catch (Exception error)
+            {
+                log.Error($"Error: {error.Message}", error);
+                MessageBox.Show($"Error: {error.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ReporteProducto reporteProductos = new ReporteProducto(usuario);//objeto de la ventana reporte del dia
+                reporteProductos.ShowDialog();//se muestra la ventana reporte del dia
+            }
+            catch (Exception error)
+            {
+                log.Error($"Error: {error.Message}", error);
+                MessageBox.Show($"Error: {error.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

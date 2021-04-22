@@ -59,8 +59,6 @@ namespace ProyectoMarketa
                                 usuario.Nombre = item.Nombre;//Se guarda el nombre del usuario que inicia sesión
                                 usuario.Cedula = item.Cedula; //Se guarda la cedula del usuario que inicia sesión
                                 usuario.Contra = item.Contraseña; //Se guarda la contrasena del usuario que inicia sesión
-                                usuario.EstadoFac = false; //Es un booleano auxiliar para que solo se pueda abrir una ventana de facturacion
-                                usuario.EstadoPag = false; //Es un booleano auxiliar para que solo se pueda abrir una ventana de pago de deudas
 
                                 string tipoUsuario = usuario.Tipo == 1 ? "Administrador" : "Cajero";
                                 MessageBox.Show($"{usuario.Nombre} {usuario.Apellidos} con la cedula: {usuario.Cedula} entró al sistema como {tipoUsuario}"); //MessageBox para notificar que se inició sesión correctamente

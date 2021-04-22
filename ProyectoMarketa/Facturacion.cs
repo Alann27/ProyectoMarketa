@@ -33,13 +33,19 @@ namespace ProyectoMarketa
         ProductoTableAdapter adapterPro = new ProductoTableAdapter();
         ProductoDataTable dataPro;
 
+        bool facturacionAbierto;
+
+        private frmMenu _menu;
+
         ClientesTableAdapter adapterCli = new ClientesTableAdapter();
-        public Facturacion(Usuario user)
+        public Facturacion(Usuario user, frmMenu menu)
         {
             try
             {
                 InitializeComponent();
                 usuario = user;
+
+                _menu = menu;
             }
             catch (Exception error)
             {
@@ -565,6 +571,7 @@ namespace ProyectoMarketa
 
                             log.Info($"{usuario.Nombre} {usuario.Apellidos} realizó la factura con el ID: {idFactura} para el cliente {idCliente}");
                             MessageBox.Show("Factura realizada correctamente", "Facturación");
+                            _menu.CargarDashboard();
                             LimpiarTodo();
                             cboNombreCliente.Focus();
                             transaction.Complete();
@@ -879,7 +886,8 @@ namespace ProyectoMarketa
         {
             try
             {
-                usuario.EstadoFac = false;
+
+                _menu.facturacionAbierto = false;
             }
             catch (Exception error)
             {
@@ -911,56 +919,56 @@ namespace ProyectoMarketa
         {
             try
             {
-                usuario.EstadoFac = false;
+                if (cbxCliente.Checked)
+                {
+                    cboNombreCliente.Enabled = true;
+                    btnComprobarCliente.Enabled = true;
+                    cboNombreCliente.Focus();
+                    BloquearControles();
+                }
+                else
+                {
+                    LimpiarCliente();
+                    cboNombreCliente.Enabled = false;
+                    btnComprobarCliente.Enabled = false;
+                    idCliente = 0;
+                    DesbloquearControles();
+                    txtIdProducto.Focus();
+                    if (dgvProductos.Rows.Count > 0)
+                    {
+                        btnFacturar.Enabled = true;
+                    }
+                }
             }
             catch (Exception error)
             {
                 log.Error($"Error: {error.Message}", error);
                 MessageBox.Show($"Error: {error.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (cbxCliente.Checked)
-            {
-                cboNombreCliente.Enabled = true;
-                btnComprobarCliente.Enabled = true;
-                cboNombreCliente.Focus();
-                BloquearControles();
-            }
-            else
-            {
-                LimpiarCliente();
-                cboNombreCliente.Enabled = false;
-                btnComprobarCliente.Enabled = false;
-                idCliente = 0;
-                DesbloquearControles();
-                txtIdProducto.Focus();
-                if (dgvProductos.Rows.Count > 0)
-                {
-                    btnFacturar.Enabled = true;
-                }
-            }
+
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             try
             {
-                usuario.EstadoFac = false;
+                LimpiarTodo();
+                if (cbxCliente.Checked)
+                {
+                    BloquearProductos();
+                    cboNombreCliente.Focus();
+                }
+                else
+                {
+                    txtIdProducto.Focus();
+                }
             }
             catch (Exception error)
             {
                 log.Error($"Error: {error.Message}", error);
                 MessageBox.Show($"Error: {error.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            LimpiarTodo();
-            if (cbxCliente.Checked)
-            {
-                BloquearProductos();
-                cboNombreCliente.Focus();
-            }
-            else
-            {
-                txtIdProducto.Focus();
-            }
+
         }
 
         private void btnCambiarPrecio_Click(object sender, EventArgs e)
@@ -969,35 +977,56 @@ namespace ProyectoMarketa
             {
                 if (dgvProductos.SelectedRows.Count > 0)
                 {
-                    MessageBoxManager.Retry = "Detalle";
-                    MessageBoxManager.Cancel = "Mayor";
 
-                    DialogResult resultado = MessageBox.Show("Seleccione a que precio desea cambiar el producto", "Cambio de precio", MessageBoxButtons.RetryCancel, MessageBoxIcon.Exclamation);
+                    ElegirOpcion elegirOpcion = new ElegirOpcion(usuario, "Cambio de precio", "Seleccione a que precio desea cambiar el producto", "Detalle", "Mayor");
+                    //MessageBoxManager.Retry = "Detalle";
+                    //MessageBoxManager.Cancel = "Mayor";
 
-                    foreach (DataGridViewRow item in dgvProductos.SelectedRows)
+                    DialogResult resultado = elegirOpcion.ShowDialog();//MessageBox.Show("Seleccione a que precio desea cambiar el producto", "Cambio de precio", MessageBoxButtons.RetryCancel, MessageBoxIcon.Exclamation);
+
+                    if (resultado == DialogResult.Abort || resultado == DialogResult.Retry)
                     {
-                        int id = Convert.ToInt32(item.Cells[6].Value.ToString());
-                        dataPro = adapterPro.BuscarPreciosPorId(id);
-                        string precioDetalle = dataPro[0][dataPro.PrecioDetalleColumn].ToString();
-                        string precioMayor = dataPro[0][dataPro.PrecioMayorColumn].ToString();
-
-                        string precio = resultado == DialogResult.Retry ? dataPro[0][dataPro.PrecioDetalleColumn].ToString() :  dataPro[0][dataPro.PrecioMayorColumn].ToString();
-
-                        item.Cells[1].Value = precio;
-                        decimal importe = Convert.ToDecimal(precio) * Convert.ToDecimal(txtCantidad.Text);
-                        decimal ITBIS = 0;
-
-                        if (aplicaITBIS)
+                        foreach (DataGridViewRow item in dgvProductos.SelectedRows)
                         {
-                            ITBIS = Convert.ToDecimal(importe * 18 / 100);
-                            ITBIS = Math.Round(ITBIS, 2);
-                            importe += ITBIS;
+                            int id = Convert.ToInt32(item.Cells[6].Value.ToString());
+                            dataPro = adapterPro.BuscarPreciosPorId(id);
+                            string precioDetalle = dataPro[0][dataPro.PrecioDetalleColumn].ToString();
+                            string precioMayor = dataPro[0][dataPro.PrecioMayorColumn].ToString();
+
+                            string precio = "";
+
+                            if (resultado == DialogResult.Retry)
+                            {
+                                precio = dataPro[0][dataPro.PrecioDetalleColumn].ToString();
+                            }
+                            else if (resultado == DialogResult.Abort)
+                            {
+                                precio = dataPro[0][dataPro.PrecioMayorColumn].ToString();
+                            }
+
+                            //precio = resultado == DialogResult.Retry ? dataPro[0][dataPro.PrecioDetalleColumn].ToString() :  dataPro[0][dataPro.PrecioMayorColumn].ToString();
+
+                            item.Cells[1].Value = precio;
+                            decimal importe = Convert.ToDecimal(precio) * Convert.ToDecimal(txtCantidad.Text);
+                            decimal ITBIS = 0;
+
+                            if (aplicaITBIS)
+                            {
+                                ITBIS = Convert.ToDecimal(importe * 18 / 100);
+                                ITBIS = Math.Round(ITBIS, 2);
+                                importe += ITBIS;
+                            }
+                            item.Cells[3].Value = ITBIS;
+                            item.Cells[5].Value = importe - Convert.ToDecimal(item.Cells[4].Value.ToString());
                         }
-                        item.Cells[3].Value = ITBIS;
-                        item.Cells[5].Value = importe - Convert.ToDecimal(item.Cells[4].Value.ToString());
+                        Total();
+                        txtIdProducto.Focus();
+
                     }
-                    Total();
-                    txtIdProducto.Focus();
+                    else
+                    {
+                        MessageBox.Show("Debe seleccionar a que precio quiere cambiar el producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
@@ -1032,5 +1061,70 @@ namespace ProyectoMarketa
                 MessageBox.Show($"Error: {error.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void ImprimirFactura(int idFactura)
+        {
+            CrearTicket ticket = new CrearTicket();
+
+            ticket.TextoCentro("La Marketa");
+
+            ticket.TextoIzquierda("Dirección: Pimenel, Mercado");
+            ticket.TextoIzquierda("Telefono: 829-000-0000");
+            ticket.TextoIzquierda("RNC: 000000000");
+            ticket.TextoIzquierda("");
+            
+            ticket.LineasGuion();
+
+            ticket.TextoIzquierda("");
+            ticket.TextoIzquierda($"Factura: {idFactura.ToString("##########")}");
+            ticket.TextoIzquierda($"Cajero: {usuario.Nombre} {usuario.Apellidos.Substring(0, usuario.Apellidos.IndexOf(' ') + 1)}");
+
+            ticket.TextoIzquierda($"Cliente: {cboNombreCliente.Text}");
+
+            ticket.TextoIzquierda("");
+            ticket.TextoExtremos($"Fecha: {DateTime.Now.ToShortDateString()}", $"Hora: {DateTime.Now.ToShortTimeString()}");
+            ticket.TextoIzquierda("");
+
+            ticket.LineasGuion();
+
+            ticket.TextoIzquierda("");
+            ticket.Encabezado();
+            ticket.LineasGuion();
+
+            foreach (DataGridViewRow item in dgvProductos.Rows)
+            {
+                ticket.AgregaProducto(item.Cells[0].Value.ToString(),
+                    Convert.ToDecimal(item.Cells[2].Value.ToString()),
+                    Convert.ToDecimal(item.Cells[1].Value.ToString()),
+                    Convert.ToDecimal(item.Cells[5].Value.ToString()));
+            }
+
+            ticket.TextoIzquierda("");
+            ticket.LineasGuion();
+            ticket.AgregarTotales("Total descuento: ", Convert.ToDecimal(txtDescuento.Text));
+            ticket.AgregarTotales("Total ITBIS: ", Convert.ToDecimal(totalITBIS));
+            ticket.AgregarTotales("Total general: ", Convert.ToDecimal(txtTotal.Text));
+            ticket.TextoIzquierda("");
+            ticket.AgregarTotales("Efectivo: ", Convert.ToDecimal(txtPago.Text));
+            ticket.AgregarTotales("Devuelta: ", Convert.ToDecimal(txtDevuelta.Text));
+
+            ticket.TextoIzquierda("");
+
+            ticket.LineasGuion();
+
+
+            ticket.TextoDerecho("Gracias por su compra!");
+
+            ticket.CortaTicket();
+
+            ticket.ImprimirTicket("POS80 Printer");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ImprimirFactura(10);
+        }
     }
+
+
 }

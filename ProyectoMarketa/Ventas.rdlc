@@ -292,7 +292,6 @@
                           <rd:DefaultName>Textbox16</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSkyBlue</BackgroundColor>
@@ -330,7 +329,6 @@
                           <rd:DefaultName>Textbox18</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSkyBlue</BackgroundColor>
@@ -368,7 +366,6 @@
                           <rd:DefaultName>Textbox20</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSkyBlue</BackgroundColor>
@@ -406,7 +403,6 @@
                           <rd:DefaultName>Textbox22</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSkyBlue</BackgroundColor>
@@ -444,7 +440,6 @@
                           <rd:DefaultName>Textbox24</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSkyBlue</BackgroundColor>
@@ -482,7 +477,6 @@
                           <rd:DefaultName>Textbox26</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSkyBlue</BackgroundColor>
@@ -520,7 +514,6 @@
                           <rd:DefaultName>Textbox28</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSkyBlue</BackgroundColor>
@@ -562,7 +555,6 @@
                           <rd:DefaultName>Cajero</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -598,7 +590,6 @@
                           <rd:DefaultName>Producto</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -634,7 +625,6 @@
                           <rd:DefaultName>Precio</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -670,7 +660,6 @@
                           <rd:DefaultName>Cantidad</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -706,7 +695,6 @@
                           <rd:DefaultName>ITBIS</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -742,7 +730,6 @@
                           <rd:DefaultName>Descuento</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -778,7 +765,6 @@
                           <rd:DefaultName>Importe</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -1088,7 +1074,6 @@
                           <rd:DefaultName>Textbox41</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>Khaki</BackgroundColor>
@@ -1126,7 +1111,6 @@
                           <rd:DefaultName>Textbox43</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>Khaki</BackgroundColor>
@@ -1164,7 +1148,6 @@
                           <rd:DefaultName>Textbox47</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>Khaki</BackgroundColor>
@@ -1206,7 +1189,6 @@
                           <rd:DefaultName>Cajero1</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -1242,7 +1224,6 @@
                           <rd:DefaultName>Cliente</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -1278,7 +1259,6 @@
                           <rd:DefaultName>DeudaFactura</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -1314,7 +1294,6 @@
                           <rd:DefaultName>DeudaTotal</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -1586,7 +1565,6 @@
                           <rd:DefaultName>Textbox54</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightGreen</BackgroundColor>
@@ -1624,7 +1602,6 @@
                           <rd:DefaultName>Textbox56</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightGreen</BackgroundColor>
@@ -1662,7 +1639,6 @@
                           <rd:DefaultName>Textbox58</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightGreen</BackgroundColor>
@@ -1700,7 +1676,6 @@
                           <rd:DefaultName>Textbox60</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightGreen</BackgroundColor>
@@ -1738,7 +1713,6 @@
                           <rd:DefaultName>Textbox62</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightGreen</BackgroundColor>
@@ -1780,7 +1754,6 @@
                           <rd:DefaultName>Cajero2</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -1816,7 +1789,6 @@
                           <rd:DefaultName>Cliente1</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -1852,7 +1824,6 @@
                           <rd:DefaultName>DeudaAnterior</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -1888,7 +1859,6 @@
                           <rd:DefaultName>Abono</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -1924,7 +1894,6 @@
                           <rd:DefaultName>DeudaActual</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>

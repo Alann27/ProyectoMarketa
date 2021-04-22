@@ -18,13 +18,15 @@ namespace ProyectoMarketa
         Metodos metodos = new Metodos();
         Usuario usuario = new Usuario();
         decimal MontoDebe = 0;//para almacenar la cantidad que debe el cliente
+        private frmMenu _menu;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public PagarDeudas(Usuario user)
+        public PagarDeudas(Usuario user, frmMenu menu)
         {
             try
             {
                 InitializeComponent();
                 usuario = user;
+                _menu = menu;
                 rbtNombre.Checked = true;//par iniciar buscando por el nombre por defecto
                 log.Debug($"Se abrió Pagar Deudas por el usuario {usuario.Nombre} {usuario.Apellidos}");
             }
@@ -255,6 +257,7 @@ namespace ProyectoMarketa
 
                         MessageBox.Show($"Abonado: RD$ {txtAbonar.Text} al cliente {cboNombre.Text}","Pago de deuda",MessageBoxButtons.OK,MessageBoxIcon.Information);//notifica al usuario que se abonó al cliente por un mensaje
                         log.Info($"El cliente con el id {idCliente} pagó un monto de {txtAbonar.Text} de una deuda total de {MontoDebe} atendido por el usuario {usuario.Nombre} {usuario.Apellidos}");//registra que se realizó un pago de deuda al cliente
+                        _menu.CargarDashboard();
                         LimpiarTodo();//se limpia todo
                         transact.Complete();//indica que se completó la transaccion
                     }
@@ -653,7 +656,7 @@ namespace ProyectoMarketa
         {
             try
             {            
-                usuario.EstadoPag = false;//identifica que ya no hay una ventana pagar deudas abierta
+                _menu.pagarDeudasAbierto= false;//identifica que ya no hay una ventana pagar deudas abierta
                 log.Debug($"Se cerró Pagar Deudas por el usuario {usuario.Nombre} {usuario.Apellidos}");
             }
             catch (Exception error)
