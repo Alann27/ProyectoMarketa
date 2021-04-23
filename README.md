@@ -8,34 +8,34 @@ When I first developed this system, I didn't know how to use ReportViewer, so I 
 
 # Screenshots
 
-Login
+# Login
 ![Login form](https://github.com/Alann27/ProyectoMarketa/blob/master/Screenshots/Login.PNG?raw=true)
 
-Menu
+# Menu
 ![Menu form](https://github.com/Alann27/ProyectoMarketa/blob/master/Screenshots/Actual%20Menu.PNG?raw=true)
 
-Billings
+# Billings
 ![Billing form](https://github.com/Alann27/ProyectoMarketa/blob/master/Screenshots/Billing.PNG?raw=true)
 
-Pay debts
+# Pay debts
 ![Pay debts form](https://github.com/Alann27/ProyectoMarketa/blob/master/Screenshots/Pay%20debts.PNG?raw=true)
 
-Add users
+# Add users
 ![Add user form](https://github.com/Alann27/ProyectoMarketa/blob/master/Screenshots/Add%20cashier.PNG?raw=true)
 
-Add products
+# Add products
 ![Add products form](https://github.com/Alann27/ProyectoMarketa/blob/master/Screenshots/Add%20product.PNG?raw=true)
 
-Modify products
+# Modify products
 ![Modify products form](https://github.com/Alann27/ProyectoMarketa/blob/master/Screenshots/Modify%20product.PNG?raw=true)
 
-Add customers
+# Add customers
 ![Add customers form](https://github.com/Alann27/ProyectoMarketa/blob/master/Screenshots/Add%20customer.PNG?raw=true)
 
-Sales reports
+# Sales reports
 ![Sales reports form](https://github.com/Alann27/ProyectoMarketa/blob/master/Screenshots/Actual%20Sales%20report.PNG?raw=true)
 
-Products reports
+# Products reports
 ![Products reports form](https://github.com/Alann27/ProyectoMarketa/blob/master/Screenshots/Actual%20Product%20report.PNG?raw=true)
 
 # Libraries
