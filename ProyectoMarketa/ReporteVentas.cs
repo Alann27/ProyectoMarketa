@@ -261,7 +261,8 @@ namespace ProyectoMarketa
 
         private void btnAno_Click(object sender, EventArgs e)
         {
-
+            DateTime fechaInicio = new DateTime(DateTime.Today.Year, 1,1);
+            GenerarVentasEntreFechas(fechaInicio, DateTime.Now);
         }
 
         private void ReporteVentas_FormClosed(object sender, FormClosedEventArgs e)

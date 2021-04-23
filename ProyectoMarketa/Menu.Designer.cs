@@ -67,6 +67,7 @@
             this.reporteDelDíaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteEntreFechasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUsuario = new System.Windows.Forms.Label();
@@ -127,7 +128,6 @@
             this.pctMasDinero = new System.Windows.Forms.PictureBox();
             this.pctMasVentas = new System.Windows.Forms.PictureBox();
             this.pctFondo = new System.Windows.Forms.PictureBox();
-            this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mStripInicio.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -440,6 +440,7 @@
             this.reporteDelDíaToolStripMenuItem.Name = "reporteDelDíaToolStripMenuItem";
             this.reporteDelDíaToolStripMenuItem.Size = new System.Drawing.Size(269, 35);
             this.reporteDelDíaToolStripMenuItem.Text = "Reporte del día";
+            this.reporteDelDíaToolStripMenuItem.Visible = false;
             this.reporteDelDíaToolStripMenuItem.Click += new System.EventHandler(this.reporteDelDíaToolStripMenuItem_Click);
             // 
             // reporteEntreFechasToolStripMenuItem
@@ -452,6 +453,7 @@
             this.reporteEntreFechasToolStripMenuItem.Name = "reporteEntreFechasToolStripMenuItem";
             this.reporteEntreFechasToolStripMenuItem.Size = new System.Drawing.Size(269, 35);
             this.reporteEntreFechasToolStripMenuItem.Text = "Reporte entre fechas";
+            this.reporteEntreFechasToolStripMenuItem.Visible = false;
             this.reporteEntreFechasToolStripMenuItem.Click += new System.EventHandler(this.reporteEntreFechasToolStripMenuItem_Click);
             // 
             // ventasToolStripMenuItem1
@@ -462,6 +464,15 @@
             this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(269, 28);
             this.ventasToolStripMenuItem1.Text = "Ventas";
             this.ventasToolStripMenuItem1.Click += new System.EventHandler(this.ventasToolStripMenuItem1_Click);
+            // 
+            // productosToolStripMenuItem
+            // 
+            this.productosToolStripMenuItem.BackColor = System.Drawing.Color.MidnightBlue;
+            this.productosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(269, 28);
+            this.productosToolStripMenuItem.Text = "Productos";
+            this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -1316,15 +1327,6 @@
             this.pctFondo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctFondo.TabIndex = 11;
             this.pctFondo.TabStop = false;
-            // 
-            // productosToolStripMenuItem
-            // 
-            this.productosToolStripMenuItem.BackColor = System.Drawing.Color.MidnightBlue;
-            this.productosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(269, 28);
-            this.productosToolStripMenuItem.Text = "Productos";
-            this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
